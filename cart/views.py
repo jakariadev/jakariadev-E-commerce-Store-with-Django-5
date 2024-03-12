@@ -28,14 +28,13 @@ def cart_add(request):
 
 
 def cart_update(request):
-    print("REQUEST_______:", request)
     cart = Cart(request)
 
     if request.POST.get('action') == 'post':
         product_id = int(request.POST.get('product_id'))
         product_quantity = int(request.POST.get('product_quantity'))
 
-        cart.update(product=product_id, qty=product_quantity)
+        cart.update(product_id, product_quantity)
 
         cart_qty = cart.__len__()
         cart_total = cart.get_total()
