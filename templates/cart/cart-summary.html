@@ -148,7 +148,7 @@
             success: function (json){
 
                 // console.log(json)
-              location.reload();
+              location.reload(true);
                 document.getElementById('cart-qty').textContent = json.qty
                 document.getElementById('total').textContent = json.total
 
@@ -185,7 +185,7 @@
             success: function (json){
 
                 // console.log(json)
-              location.reload();
+              location.reload(true);
                 document.getElementById('cart-qty').textContent = json.qty
                 document.getElementById('total').textContent = json.total
 
