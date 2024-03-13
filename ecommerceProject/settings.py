@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'store',
     'cart',
     'mathfilters',
+    'account',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -127,7 +129,35 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'static/media'
 
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Email configuration for console
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Email configuration settings:
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = '587'
+# EMAIL_USE_TLS = 'True'
+
+
+# Reconfigure the Configuration with SSL
+# EMAIL_BACKEND = 'account.backend.email_backend.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = '587'
+# EMAIL_USE_TLS = 'False'
+
+
+EMAIL_HOST_USER = '' # - Enter GMAIL address # The host email that sends password reset emails
+EMAIL_HOST_PASSWORD = '' # - Enter app password
+

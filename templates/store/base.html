@@ -12,7 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-	  <title> Edenthought </title>
+	  <title> JKRE-COMMERCE </title>
 
 
 
@@ -51,7 +51,7 @@
 
         <a class="navbar-brand main-heading text-white" href="{% url 'store' %}">
 
-        &nbsp; &nbsp; Edenthought
+        &nbsp; &nbsp; JKRECOMMERCE
 
         </a>
 
@@ -112,21 +112,47 @@
 
         <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
 
-            <ul class="navbar-nav ms-auto">
+           <ul class="navbar-nav ms-auto">
+
+                {% if user.is_authenticated %}
+
+                    <li class="nav-item">
+
+                        <a class="btn btn-alert navbar-btn text-white" type="button"  href="{% url 'dashboard' %}"> <i class="fa fa-home" aria-hidden="true"></i> &nbsp; Dashboard </a>
+
+                    </li>
+
+                    {% else %}
+
+                    <li class="nav-item">
+
+                        <a class="btn btn-alert navbar-btn text-white" type="button"  href="{% url 'register' %}"> Register </a>
+
+                    </li>
 
 
-                <li class="nav-item">
-
-                    <a class="btn btn-alert navbar-btn text-white" type="button"  href="/"> Register </a>
-
-                </li>
+                {% endif %}
 
 
-                <li class="nav-item">
+                {% if user.is_authenticated %}
 
-                    <a class="btn btn-alert navbar-btn text-white" type="button"  href="/"> Login </a>
+                    <li class="nav-item">
 
-                </li>
+
+                        <a class="btn btn-alert navbar-btn text-white" type="button"  href="{% url 'user-logout' %}"> <i class="fa fa-sign-out" aria-hidden="true"></i> &nbsp; Logout </a>
+
+                    </li>
+
+
+                    {% else %}
+
+                        <li class="nav-item">
+
+                            <a class="btn btn-alert navbar-btn text-white" type="button"  href="{% url 'my-login' %}"> Login </a>
+
+                        </li>
+
+                {% endif %}
 
 
                 &nbsp; &nbsp; &nbsp;
@@ -138,24 +164,35 @@
 
 
 
-                        <i class="fa fa-shopping-cart" aria-hidden="true">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"> </i>
+
+                        &nbsp;
 
                         <div id="cart-qty" class="d-inline-flex">
 
+
                             {% with qty_amount=cart|length %}
 
+
                                 {% if qty_amount > 0 %}
+
                                     {{ qty_amount }}
-                                {% else %}
-                                    0
+
+
+                                    {% else %}
+
+                                        0
+
+
                                 {% endif %}
+
+
 
                             {% endwith %}
 
 
                         </div>
 
-                        </i>
 
 
                     </a>
@@ -166,8 +203,6 @@
 
 
             </ul>
-
-
         </div>
 
 
